@@ -199,15 +199,13 @@ const GuideViewer = () => {
                 </div>
             </div>
         </div>
-            </div >
 
-    {/* Completion Section */ }
-    < div className = "flex justify-center mb-12" >
+            {/* Completion Section */ }
+    <div className="flex justify-center mb-12">
         <button
             onClick={async () => {
                 try {
                     await axios.post(`${import.meta.env.VITE_API_URL}/guides/${id}/complete`);
-                    // Show toast or change button state (simplified for now)
                     alert('Guide marked as completed!');
                 } catch (err) {
                     console.error('Error marking complete', err);
@@ -218,7 +216,7 @@ const GuideViewer = () => {
             <CheckCircle size={20} />
             Mark as Completed
         </button>
-            </div >
+    </div>
         </div >
     );
 };
