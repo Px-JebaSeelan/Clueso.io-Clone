@@ -75,7 +75,6 @@ const GuideViewer = () => {
             setSummary(res.data.summary);
         } catch (err) {
             console.error("Summary generation failed", err);
-            // Optionally set an error state here
         } finally {
             setGenerating(false);
         }
@@ -83,8 +82,6 @@ const GuideViewer = () => {
 
     return (
         <div className="max-w-4xl mx-auto pb-10">
-            {/* ... (Header and Summary) ... */}
-
             {/* Header */}
             <div className="flex items-center gap-4 mb-8 pt-8">
                 <Link to="/" className="p-2 hover:bg-zinc-800 rounded-lg text-zinc-400 hover:text-white transition-colors">
@@ -97,7 +94,6 @@ const GuideViewer = () => {
             </div>
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden mb-8">
-                {/* ... (Title and Actions) ... */}
                 <div className="p-8 border-b border-zinc-800">
                     <div className="flex items-start justify-between">
                         <div>
@@ -198,26 +194,25 @@ const GuideViewer = () => {
                     {feedbacks.length === 0 && <p className="text-zinc-500 italic">No feedback yet.</p>}
                 </div>
             </div>
-        </div>
 
-            {/* Completion Section */ }
-    <div className="flex justify-center mb-12">
-        <button
-            onClick={async () => {
-                try {
-                    await axios.post(`${import.meta.env.VITE_API_URL}/guides/${id}/complete`);
-                    alert('Guide marked as completed!');
-                } catch (err) {
-                    console.error('Error marking complete', err);
-                }
-            }}
-            className="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-green-500/20 hover:scale-105"
-        >
-            <CheckCircle size={20} />
-            Mark as Completed
-        </button>
-    </div>
-        </div >
+            {/* Completion Section */}
+            <div className="flex justify-center mb-12">
+                <button
+                    onClick={async () => {
+                        try {
+                            await axios.post(`${import.meta.env.VITE_API_URL}/guides/${id}/complete`);
+                            alert('Guide marked as completed!');
+                        } catch (err) {
+                            console.error('Error marking complete', err);
+                        }
+                    }}
+                    className="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-green-500/20 hover:scale-105"
+                >
+                    <CheckCircle size={20} />
+                    Mark as Completed
+                </button>
+            </div>
+        </div>
     );
 };
 
