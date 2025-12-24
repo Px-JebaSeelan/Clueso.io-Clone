@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            width: 300px;
+            padding: 16px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #18181b;
+            color: white;
+        }
+
+        h1 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #60a5fa;
+        }
+
+        p {
+            font-size: 14px;
+            color: #a1a1aa;
+            margin-bottom: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        #recordBtn {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        #recordBtn:hover {
+            background-color: #dc2626;
+        }
+
+        #loginBtn {
+            background-color: #3b82f6;
+            color: white;
+            display: none;
+        }
+
+        .status {
+            margin-top: 10px;
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Clueso Clone</h1>
+
+    <div id="mainView">
+        <p>Ready to capture a guide?</p>
+        <button id="recordBtn">Start Recording</button>
+    </div>
+
+    <div id="loginView" style="display: none;">
+        <p>Please login to start recording.</p>
+        <button id="loginBtn">Go to Login</button>
+    </div>
+
+    <div class="status" id="statusMsg"></div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>
