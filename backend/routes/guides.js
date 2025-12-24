@@ -115,4 +115,26 @@ router.post('/:id/summarize', auth, async (req, res) => {
     }
 });
 
+// Increment View Count
+router.post('/:id/view', async (req, res) => {
+    try {
+        await Guide.findByIdAndUpdate(req.params.id, { $inc: { views: 1 } });
+        res.status(200).send();
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// Increment Completion Count
+router.post('/:id/complete', async (req, res) => {
+    try {
+        await Guide.findByIdAndUpdate(req.params.id, { $inc: { completions: 1 } });
+        res.status(200).send();
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 export default router;

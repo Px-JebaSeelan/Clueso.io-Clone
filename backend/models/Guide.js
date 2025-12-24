@@ -23,6 +23,14 @@ const guideSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+    views: {
+        type: Number,
+        default: 0,
+    },
+    completions: {
+        type: Number,
+        default: 0,
+    },
 });
 
 export default mongoose.model('Guide', guideSchema);

@@ -28,11 +28,15 @@ const Dashboard = () => {
         fetchGuides();
     }, []);
 
-    // Mock Stats
+    // Calculate Stats
+    const totalViews = guides.reduce((acc, guide) => acc + (guide.views || 0), 0);
+    const totalCompletions = guides.reduce((acc, guide) => acc + (guide.completions || 0), 0);
+    const completionRate = totalViews > 0 ? Math.round((totalCompletions / totalViews) * 100) : 0;
+
     const stats = [
         { label: 'Total Guides', value: guides.length, icon: Book, color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20' },
-        { label: 'Total Views', value: '1,234', icon: Eye, color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/20' },
-        { label: 'Completion Rate', value: '87%', icon: TrendingUp, color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/20' },
+        { label: 'Total Views', value: totalViews.toLocaleString(), icon: Eye, color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/20' },
+        { label: 'Completion Rate', value: `${completionRate}%`, icon: TrendingUp, color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/20' },
     ];
 
     return (
