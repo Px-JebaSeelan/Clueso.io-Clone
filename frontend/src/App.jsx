@@ -21,6 +21,18 @@ const ProtectedRoute = ({ children }) => {
 };
 
 function App() {
+  // Wake up Render server on load
+  useEffect(() => {
+    const wakeUpServer = async () => {
+      try {
+        await axios.get(`${import.meta.env.VITE_API_URL}/guides`); // Or a specific health endpoint
+      } catch (err) {
+        // Ignore errors, just trying to wake it up
+      }
+    };
+    wakeUpServer();
+  }, []);
+
   return (
     <AuthProvider>
       <Router>
